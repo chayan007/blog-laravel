@@ -25,6 +25,8 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::get('/admin', 'AdminController@index');
     Route::post('/admin/delete/post/{id}', 'AdminController@deletepost');
     Route::post('/admin/edit/post/{id}', 'AdminController@editpost');
+    Route::post('/admin/delete/comment/{id}', 'AdminController@deletecomment');
+    Route::post('/admin/edit/comment/{id}', 'AdminController@editcomment');
 });
 
 

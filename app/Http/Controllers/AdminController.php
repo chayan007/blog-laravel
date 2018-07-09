@@ -69,6 +69,15 @@ class AdminController extends Controller
         $comments = Comment::get();
         return view('admin', ['posts' => $posts, 'comments' => $comments]);
     }
+    public function editcomment(Request $request, $id)
+    {
+        $comment = Comment::find($id);
+        $comment->comment = $request->comment;
+        $comment->save();
+        $posts = Post::get();
+        $comments = Comment::get();
+        return view('admin', ['posts' => $posts, 'comments' => $comments]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -91,6 +100,13 @@ class AdminController extends Controller
     public function deletepost($id)
     {
         $post= Post::destroy($id);
+        $posts = Post::get();
+        $comments = Comment::get();
+        return view('admin', ['posts' => $posts, 'comments' => $comments]);
+    }
+    public function deletecomment($id)
+    {
+        $comment = Comment::destroy($id);
         $posts = Post::get();
         $comments = Comment::get();
         return view('admin', ['posts' => $posts, 'comments' => $comments]);

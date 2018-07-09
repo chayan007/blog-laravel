@@ -17,9 +17,14 @@
     <p>Unique Slug is : {{ $post->slug }}</p>
     <img src="{{ Storage::url($post->img_url) }}" alt=""/>
     Comments :<br>
-    @foreach ($comments as $comment)
-    <
-    @endforeach
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                  @foreach ($comments as $comment)
+                <li class="list-group-item">{{$comment->comment}}</li>
+                <small>Commented by {{$comment->user_id}}</small>
+                    @endforeach
+            </ul>
+        </div>
 
     <form action="comment" method="POST">
         <input type="text" name="comment"/>

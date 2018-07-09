@@ -75,6 +75,52 @@
         </div>
     </div>
     </div>
+     <div class="card-deck">
+        @foreach($comments as $comment)
+        <div class="card">
+            <img class="card-img-top" src="{{ Storage::url($post->img_url) }}" alt="">
+            <div class="card-body">
+                <h4 class="card-title">{{$comment->post_id}}</h4>
+                <p class="card-text">{{$comment->comment}}</p>
+                <form method="POST" action="admin/delete/comment/{{$comment->id}}" style="float : right">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                    <button type="button" class="btn btn-warning" data-toggle="modal2" data-target="#myModal2">Edit</button>
+                     <div class="modal2" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update Post</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       <form method="POST" action="admin/edit/comment/{{$comment->id}}">
+        @csrf
+           <div class="form-group">
+             <label for="">Comment</label>
+             <input type="text" name="desc" id="" class="form-control" placeholder="Enter new Comment" aria-describedby="helpId">
+           </div>
+           <button type="submit" class="btn btn-dark" value="Submit">Submit</button>
+       </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+            </div>
+        </div>
+        @endforeach
+    </div> <br>
 </body>
  <!-- Bootstrap core JavaScript -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
