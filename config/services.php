@@ -29,6 +29,23 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+
+
+    'facebook' => [
+
+        'client_id' => '1120224634748024', //Facebook API
+
+        'client_secret' => '7303691d807eaff92bbb1657b96b1e', //Facebook Secret
+
+        'redirect' => 'http://laravel.localhost/login/facebook/callback',
+
+    ],
+        'facebook' => [
+        'client_id' => '251084432153030', //Facebook API
+        'client_secret' => '3f18402a016d204ceb3772f3aa105530', //Facebook Secret
+        'redirect' => 'http://blog.test/login/facebook/callback',
+    ],
+
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),

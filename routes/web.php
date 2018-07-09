@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PostsController@show');
+Route::get('/login/{social}', 'Auth\LoginController@socialLogin')->where('social', 'twitter|facebook|linkedin|google|github|bitbucket');
+Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'twitter|facebook|linkedin|google|github|bitbucket');
 
 Auth::routes();
 
@@ -34,6 +36,7 @@ Route::get('/{username}', 'PostsController@showuser');
 Route::get('/{username}/{slug}', function () {
     return view('welcome');
 });
+
 
 
 
